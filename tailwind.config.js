@@ -7,7 +7,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens :{
+        sm : "350px"
+      }
+    },
   },
   plugins: [
     require("flowbite"),
