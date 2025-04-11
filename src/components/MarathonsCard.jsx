@@ -6,7 +6,7 @@ const MarathonsCard = ({data}) => {
     console.log('the image is ',MarathonImage);
     
     return (
-        <div className="card bg-slate-600 shadow-sm dark:bg-gray-800 dark:text-white">
+        <div className="card bg-slate-300 shadow-sm dark:bg-gray-800 dark:text-white">
   <figure>
     <img
       src={MarathonImage}

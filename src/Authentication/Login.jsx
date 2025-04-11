@@ -1,20 +1,25 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Provider/Authprovider';
 
 const Login = () => {
 const {signin,Googlesignin}  = useContext(Authcontext) 
-
-const handleLogin = (e) =>{
+const location = useLocation();
+console.log('the location is', location.pathname);
+const navigate = useNavigate();
+const from = location?.state || '/'
+const handleLogin =  async (e) =>{
     e.preventDefault();
 const formData = e.target;
 const email  = formData.email.value;
 const password = formData.password.value;
 console.table({email,password})   
 try{
-signin(email,password)
+  // user login
+await signin(email,password)
 toast.success('Sign in Successfully')
+navigate(from,{replace : true})
 }
 catch(error){
     toast.error(error.message)
@@ -24,8 +29,9 @@ catch(error){
 
 const GoogleLogin = async () =>{
     try{
-      await  Googlesignin()
+      await Googlesignin()
       toast.success('Google Login Successfully')
+      navigate(from,{replace : true})
     }
     catch(error){
 toast.error(error.message)
@@ -46,7 +52,7 @@ toast.error(error.message)
           <label className="fieldset-label">Password</label>
           <input type="password" className="input" name='password' placeholder="Password" />
           <div className='flex justify-center'><button type='submit' className="btn btn-neutral mt-4 w-full">Login</button></div>
-          <div className='flex justify-center'><button onClick={GoogleLogin} className=''>Google</button></div>
+          <div className='flex justify-center'><button onClick={GoogleLogin} className='btn btn-neutral mt-4 w-full'>Google</button></div>
         </form>
       </div>
       <div>

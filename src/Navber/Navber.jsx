@@ -11,10 +11,10 @@ import { Authcontext } from "../Provider/Authprovider";
 const Navber = () => {
 const {theme,toggleTheme} = useTheme();
 
-const {name,roll} = useContext(Authcontext)
+const {logout,user} = useContext(Authcontext)
 
   return (
-    <div className=" ">
+    <div>
       <div className="navbar bg-base-100 shadow-sm dark:bg-gray-800 dark:text-white">
   <div className="navbar-start">
     <div className="dropdown">
@@ -23,7 +23,7 @@ const {name,roll} = useContext(Authcontext)
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow dark:bg-gray-800 dark:text-white">
         <li><NavLink to='/' className={({isActive}) => isActive ? 'active' : ''} >Home </NavLink></li>
         <li><NavLink to='/marathons' className={({isActive}) => isActive ? 'active' : ''}>Marathons</NavLink></li>
         <li><NavLink to='/dashboard' className={({isActive}) => isActive ? 'active' : ''} >Dashboard</NavLink></li>
@@ -36,17 +36,36 @@ const {name,roll} = useContext(Authcontext)
     <ul className="menu menu-horizontal px-1">
       <li> <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink></li>
       <li><NavLink to="marathons" className={({ isActive }) => isActive ? 'active' : ''}>Marathons</NavLink></li>
-      <li><NavLink to="dashboard" className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink></li>
+      <li>{user && <NavLink to="dashboard" className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink>        }</li>
     </ul>
   </div>
-  <div className="navbar-end space-x-3">
-<div><NavLink to='/login'>Login</NavLink></div>
+  <div className="navbar-end space-x-5">
+
+
+{
+  user ? (
+    
+<div className="flex items-center gap-2 ">
+<div className="avatar">
+  <div className="w-10 rounded-full">
+    <img src={user?.photoURL} />
+  </div>
+</div>
+<div>
+  <button onClick={logout}>Logout</button>
+</div>
+</div>
+  ) : (    <div><NavLink to='/login'>Login</NavLink></div>)
+}
 <div>
 <Button onClick={toggleTheme}>
   {theme === 'light' ? <CiLight className="mr-2 text-blue-500 text-[30px]" /> : <MdLightMode className="mr-2 text-gray-100 text-[30px]" />}
 </Button>
-
 </div>
+
+
+
+
   </div>
 </div>
     </div>

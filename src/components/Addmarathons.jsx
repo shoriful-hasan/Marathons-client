@@ -1,17 +1,19 @@
 import { format, formatDate } from 'date-fns';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import axios from 'axios'
 import  Datepicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import {useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Authcontext } from '../Provider/Authprovider';
 const Addmarathons = () => {
 const [startregDate,SetstartregDate] = useState(new Date())
 const [EndregDate,SetEndregDate] = useState(new Date())
 const [MarathonStartDate,SetMarathonStartDate] = useState(new Date())
 const [CreatedAt,SetCreatedAt] = useState(new Date().toLocaleDateString())
 const navigate = useNavigate()
+const {user} = useContext(Authcontext)
 const HandleAddMarathon = async (e)=>{
     e.preventDefault()
 const formData            = e.target;
@@ -24,12 +26,21 @@ const RunningDistance     = formData.Distance.value;
 const location            = formData.location.value; 
 const MarathonImage       = formData.MarathonImage.value;
 const Description         = formData.Description.value;
+const email               = user?.email;
+const Regmarathon         = 0;
 console.table({marathonTitle,RegStartDate,RegEndDate,StartMarathoDate,MarathonCreatedDate,RunningDistance,location,MarathonImage,Description});
 const MarathonData = {
-marathonTitle,RegStartDate,
-RegEndDate,StartMarathoDate,
-MarathonCreatedDate,RunningDistance,
-location,MarathonImage,Description
+email,
+marathonTitle,
+RegStartDate,
+RegEndDate,
+StartMarathoDate,
+MarathonCreatedDate,
+RunningDistance,
+location,
+MarathonImage,
+Description,
+Regmarathon
 }
 try{
   await axios.post(`${import.meta.env.VITE_API_URL}/SingleMarathons`,MarathonData)
@@ -96,7 +107,7 @@ catch(error){
           <label className="label">
            Running Distance
           </label><br />
-          <select name="Distance" id="" className='border w-full p-2 rounded-md'>
+          <select name="Distance" id="" className='border w-full p-2 rounded-md' required>
             <option value="Select Your Distance">Select Your Distance</option>
             <option value="25K">25K</option>
             <option value="10K">10K</option>
@@ -110,7 +121,7 @@ catch(error){
 <label className="label">
  Location
 </label><br />
-<select name="location" id="" className='border w-full p-2 rounded-md'>
+<select name="location" id="" className='border w-full p-2 rounded-md' required>
   <option value="Select Your Distance">Select Your Location</option>
   <option value="Dhaka">Dhaka</option>
   <option value="Sylhet">Sylhet</option>

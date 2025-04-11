@@ -10,6 +10,10 @@ import MyApply from '../components/MyApply'
 import MarathonDetails from '../components/MarathonDetails'
 import Login from '../Authentication/Login'
 import Register from '../Authentication/Register'
+import Privatecompo from '../Private/Privatecompo'
+import MarathonReg from '../components/MarathonReg'
+import Updatemarathon from '../components/Updatemarathon'
+
 const router = createBrowserRouter([
 {
     path : '/',
@@ -30,21 +34,25 @@ const router = createBrowserRouter([
     children : [
       {
         path : 'Addmarathons',
-        element : <Addmarathons></Addmarathons>
+        element : <Privatecompo><Addmarathons></Addmarathons></Privatecompo>
       },
       {
         path : 'MymarathonsList',
-        element : <MymarathonList></MymarathonList>
+        element : <Privatecompo> <MymarathonList></MymarathonList></Privatecompo>
       },
       {
         path : 'MyApplyList',
-        element : <MyApply></MyApply>
+        element : <Privatecompo><MyApply></MyApply></Privatecompo>
       }
     ]
   },
   {
 path : '/Details/:id',
-element : <MarathonDetails></MarathonDetails>
+element : <Privatecompo><MarathonDetails></MarathonDetails></Privatecompo>
+  },
+  {
+    path    : '/updatemarathon/:id',
+    element : <Privatecompo><Updatemarathon></Updatemarathon></Privatecompo>
   },
   {
     path : '/login',
@@ -53,6 +61,10 @@ element : <MarathonDetails></MarathonDetails>
   {
     path : '/Register',
     element : <Register></Register> 
+  },
+  {
+    path : '/marathonReg',
+    element : <MarathonReg></MarathonReg>
   }
     ]
 }

@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Provider/Authprovider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
 const {NewUserRegister,updateprofile,setuser} = useContext(Authcontext)
-
+const location = useLocation();
+const navigate = useNavigate();
+const from = location?.state || '/'
 const handleRegister = async (e)=>{
     e.preventDefault();
     const formData = e.target;
@@ -17,7 +19,8 @@ const handleRegister = async (e)=>{
     try{
 const result = await NewUserRegister(email,password)
 setuser(result)
-toast.success('Register Successfully Done')
+toast.success('Register Successfully Done');
+navigate(from,{replace : true})
     }
     catch(error){
         console.log(error.message);
