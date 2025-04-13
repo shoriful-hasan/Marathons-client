@@ -43,7 +43,7 @@ const logout = () =>{
 // OnAuthStateChanged
 useEffect(()=>{
 const unsubscribe = onAuthStateChanged(auth,currentUser =>{
-    console.log('the use is', currentUser);
+    // console.log('the use is', currentUser);
     
     setuser(currentUser)
     setloading(false)

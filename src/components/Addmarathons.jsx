@@ -43,7 +43,7 @@ Description,
 Regmarathon
 }
 try{
-  await axios.post(`${import.meta.env.VITE_API_URL}/SingleMarathons`,MarathonData)
+  await axios.post(`https://server-fawn-three.vercel.app/SingleMarathons`,MarathonData)
   toast.success('Data are added')
   navigate('/marathons')
 }

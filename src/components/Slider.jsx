@@ -9,7 +9,7 @@ const Slider = ({text,image}) => {
         }}
         >
            <div className='text-2xl flex justify-center items-center h-full'>
-           <h1 className='text-gray-800 text-6xl'>{text}</h1>
+           <h1 className='text-gray-800 sm:text-2xl md:text-4xl lg:text-6xl '>{text}</h1>
            </div>
         </div>
     );

@@ -1,12 +1,14 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Marathon management site
 
-Currently, two official plugins are available:
+#Description 
+This is a Marathon Website where user can see the marathon List and  choose a specific marathon if they are login they can register for specific marathon but if he / she cannot login they are redirected in the login or register page if his / her have already an account they can easily login his / her past login information if they dont have account they must be register using register form there have some private route and have some public route
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#Technology : 
+tailwindcss ,daisyui, react-router, swiper.js, mongodb, node.js, express.js, react.js,firebase Authentication etc
+#Responsiveness : 
+mobile,tablet,and Desktop
+#Features: 
+Dark / Light mood , firebase Authentication, search, Details information in a marathon
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

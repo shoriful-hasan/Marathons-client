@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MarathonRow = ({data,HandleDelete}) => {
     const {_id,marathonTitle,RegStartDate,RegEndDate,StartMarathoDate,RunningDistance,location}  = data
     return (
-        <tr>
+        <tr className='dark:text-slate-300 text-gray-900'>
       
         <td>{marathonTitle}</td>
         <td>{RegStartDate}</td>

@@ -14,12 +14,12 @@ useEffect(()=>{
     handlejobs()
 },[])
 const handlejobs = async () =>{
-    const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/marathonsLimit`)
-    console.log('the home data', data);
+    const {data} = await axios.get(`https://server-fawn-three.vercel.app/marathonsLimit`)
+    // console.log('the home data', data);
     setjobs(data)
     
 }
-console.log('the data is',jobs);
+// console.log('the data is',jobs);
 
     return (
         <div>

@@ -10,7 +10,7 @@ const MyApply = () => {
 const {user} = useContext(Authcontext)
 const [Apply,SetApply] = useState([])
 const [search,setsearch] = useState('')
-console.log('the search value is',search);
+// console.log('the search value is',search);
 
 
 
@@ -22,8 +22,8 @@ useEffect(()=>{
 },[search])
 const myApplyData =  async () =>{
   try{
- const {data} =  await axios.get(`${import.meta.env.VITE_API_URL}/MyApplymarathon/${user.email}?search=${search}`)
- console.log('my apply data is here', data);
+ const {data} =  await axios.get(`https://server-fawn-three.vercel.app/MyApplymarathon/${user.email}?search=${search}`)
+//  console.log('my apply data is here', data);
  SetApply(data)
  
  }
@@ -46,7 +46,7 @@ const MyAApplyDelete =  async (id) =>{
   .then(async (result) => {
     if (result.isConfirmed) {
       try{ 
- await axios.delete(`${import.meta.env.VITE_API_URL}/MyApplyDelete/${id}`)
+ await axios.delete(`https://server-fawn-three.vercel.app/MyApplyDelete/${id}`)
 myApplyData()
         Swal.fire({
           title: "Deleted!",
@@ -86,8 +86,8 @@ myApplyData()
          
   <table className="table table-xs">
   
-    <thead>
-      <tr>
+    <thead className='dark:text-white text-gray-950 '>
+      <tr className=''>
         <th>FirstName</th>
         <th>LastName</th>
         <th>title</th>

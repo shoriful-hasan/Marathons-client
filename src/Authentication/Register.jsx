@@ -23,7 +23,8 @@ toast.success('Register Successfully Done');
 navigate(from,{replace : true})
     }
     catch(error){
-        console.log(error.message);
+        // console.log(error.message);
+        toast.error(error.message)
         
     }
 }

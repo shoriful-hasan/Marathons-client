@@ -3,12 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios'
 import Timer from './Timer';
 import { formatDate } from 'date-fns';
+import toast from 'react-hot-toast';
 
 const MarathonDetails = () => {
 const {id} = useParams()
-console.log('the Details page id is ', id);
+// console.log('the Details page id is ', id);
 const [MarathonDetails,SetMarathonDetails] = useState([])
-console.log('my name is shoriful hasan and this is Details Data',MarathonDetails);
+// console.log('my name is shoriful hasan and this is Details Data',MarathonDetails);
 
 useEffect(()=>{
     DetailsDataGet()
@@ -17,13 +18,14 @@ useEffect(()=>{
 const DetailsDataGet = async() =>{
 
   try{
-    const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/GetSingleDataDetails/${id}`)
+    const {data} = await axios.get(`https://server-fawn-three.vercel.app/GetSingleDataDetails/${id}`)
     SetMarathonDetails(data);
-    console.log('the error data is',data);
+    // console.log('the error data is',data);
     
   }
 catch(error){
-    console.log(error.message);
+    // console.log(error.message);
+    toast.error(error.message)
     
 }
 
@@ -31,7 +33,7 @@ catch(error){
 
 const today  = new Date();
 const actualDate = formatDate(today,'dd-MM-yyyy')
-console.log('today is ', actualDate);
+// console.log('today is ', actualDate);
 
 
 const {marathonTitle,RegStartDate,RegEndDate,StartMarathoDate,MarathonCreatedDate,RunningDistance,location,MarathonImage,Description,Regmarathon} = MarathonDetails || {}

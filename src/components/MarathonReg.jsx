@@ -13,10 +13,10 @@ import axios from 'axios';
 const MarathonReg = () => {
   const {user} = useContext(Authcontext)
   const email = user?.email;
-  console.log('the loged in user', email);
+  // console.log('the loged in user', email);
   const location = useLocation();
   const MarathonDetails  = location.state?.value;
-  console.log('the proper data is ', MarathonDetails);
+  // console.log('the proper data is ', MarathonDetails);
   const navigate = useNavigate();
   useEffect(() => {
     if (!MarathonDetails) {
@@ -26,7 +26,7 @@ const MarathonReg = () => {
   
 const HandleReg = (e) =>{
   e.preventDefault()
-  console.log('the button are click');
+  // console.log('the button are click');
   const formData   = e.target;
   const title      = MarathonDetails?.marathonTitle;
   const startDate  = MarathonDetails?.StartMarathoDate;
@@ -44,7 +44,7 @@ const HandleReg = (e) =>{
   
 
 try{
-axios.post(`${import.meta.env.VITE_API_URL}/MarathonReg`,Data)
+axios.post(`https://server-fawn-three.vercel.app/MarathonReg`,Data)
 navigate('/dashboard')
 }
 catch(error){

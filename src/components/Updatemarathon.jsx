@@ -16,11 +16,11 @@ const Updatemarathon = () => {
     const [CreatedAt,SetCreatedAt] = useState(new Date().toLocaleDateString())
     const [oldData,SetoldData] = useState([]);
 
-    console.log('The Old Data is here',oldData)
+    // console.log('The Old Data is here',oldData)
     const navigate = useNavigate()
     const {user} = useContext(Authcontext)
     const {id} = useParams();
-    console.log('the update data id is', id);
+    // console.log('the update data id is', id);
     
 const {_id,email,marathonTitle,RegStartDate,RegEndDate,StartMarathoDate,MarathonCreatedDate,RunningDistance,location,MarathonImage,Description} = oldData || {}
 const [Distance,setDistance] = useState(RunningDistance || '50k')
@@ -32,7 +32,7 @@ const [Distance,setDistance] = useState(RunningDistance || '50k')
     const singleDataOld = async () =>{
      
        try{
-        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/GetSingleDataDetails/${id}`)
+        const {data} = await axios.get(`https://server-fawn-three.vercel.app/GetSingleDataDetails/${id}`)
         SetoldData(data)
         SetstartregDate(parse(data.RegStartDate, 'dd-MM-yyyy', new Date()))
         SetEndregDate(parse(data.RegEndDate, 'dd-MM-yyyy', new Date()))
@@ -76,7 +76,7 @@ const [Distance,setDistance] = useState(RunningDistance || '50k')
 
     console.table({Data});
     try{
-        axios.put(`${import.meta.env.VITE_API_URL}/marathonUpdate/${_id}`,Data);
+        axios.put(`https://server-fawn-three.vercel.app/marathonUpdate/${_id}`,Data);
         navigate('/marathons')
     }
     catch(error) {

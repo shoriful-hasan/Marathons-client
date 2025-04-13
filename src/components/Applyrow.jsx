@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const Applyrow = ({aply,MyAApplyDelete,SetApply,myApplyData}) => {
     
-  const {_id,title,startDate,firstName,LastName,contact,Running,location,email} = aply
+  const {_id,title,startDate,firstName,LastName,contact,Running,location,email} = aply || {}
 
 const updateApply = async (e) =>{
 e.preventDefault();
@@ -20,7 +20,7 @@ const applyUpdateData = {
   fname,lname,phone
 }
 try{
- const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/MyApplyUpdate/${_id}`,applyUpdateData)
+ const {data} = await axios.patch(`https://server-fawn-three.vercel.app/MyApplyUpdate/${_id}`,applyUpdateData)
  SetApply(data);
  myApplyData()
 }
@@ -67,7 +67,7 @@ catch(error){
   </div>
 </dialog>
 
-        <tr>
+        <tr className='dark:text-slate-300 text-gray-900'>
         <td>{firstName}</td>
         <td>{LastName}</td>
         <td>{title}</td>

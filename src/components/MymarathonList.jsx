@@ -9,14 +9,14 @@ const MymarathonList = () => {
 const [marathon,setmarathon] = useState([])
 const {user} = useContext(Authcontext)
 
-console.log('the login user is', user?.email);
+// console.log('the login user is', user?.email);
 useEffect(()=>{
     handlegetData()
 },[user])
 // get the data in specific user
 const handlegetData = async () =>{
 try{
-   const {data} =   await axios.get(`${import.meta.env.VITE_API_URL}/Mymarathons/${user?.email}`)
+   const {data} =   await axios.get(`https://server-fawn-three.vercel.app/Mymarathons/${user?.email}`)
    setmarathon(data)
 }
 catch(error){
@@ -25,7 +25,7 @@ catch(error){
 }
 
 const HandleDelete = async (id)=>{
-console.log('the click in another component', id);
+// console.log('the click in another component', id);
 
 Swal.fire({
     title: "Are you sure?",
@@ -39,7 +39,7 @@ Swal.fire({
 
     if (result.isConfirmed) {
         try {
-            await axios.delete(`${import.meta.env.VITE_API_URL}/marathon/${id}`)
+            await axios.delete(`https://server-fawn-three.vercel.app/marathon/${id}`)
             handlegetData()
             
       Swal.fire({
@@ -59,12 +59,12 @@ Swal.fire({
 
     return (
         <div>
-            <h1>My Marathons List {marathon.length}</h1>
+        
 
             <div className="overflow-x-auto">
   <table className="table table-xs">
-    <thead>
-      <tr>
+    <thead >
+      <tr className='dark:text-white text-gray-950'>
         <th>Title</th>
         <th>RegStartDate</th>
         <th>RegEndDate</th>

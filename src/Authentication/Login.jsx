@@ -6,7 +6,7 @@ import { Authcontext } from '../Provider/Authprovider';
 const Login = () => {
 const {signin,Googlesignin}  = useContext(Authcontext) 
 const location = useLocation();
-console.log('the location is', location.pathname);
+// console.log('the location is', location.pathname);
 const navigate = useNavigate();
 const from = location?.state || '/'
 const handleLogin =  async (e) =>{

@@ -8,7 +8,7 @@ if (!RegEndDate) {
     return <div>Loading...</div>; // You can display a loading message or spinner here
   }
   const marathonDate = parse(RegEndDate, 'dd-MM-yyyy', new Date());
-  console.log('The ISO format is', marathonDate);
+  // console.log('The ISO format is', marathonDate);
   if (!isValid(marathonDate)) {
     return <div>Invalid marathon start date</div>;
   }
@@ -17,7 +17,7 @@ if (!RegEndDate) {
 
   // Check if the marathon date is in the future
   const isDateinfuture = marathonDate > now;
-console.log(`the marathonDate ${marathonDate} and the now Date is ${now}`);
+// console.log(`the marathonDate ${marathonDate} and the now Date is ${now}`);
 
   // Calculate the remaining time in seconds
   const durationInSeconds = Math.floor((marathonDate - now) / 1000);

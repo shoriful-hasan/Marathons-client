@@ -15,12 +15,12 @@ useEffect(()=>{
 
 const [job,setjob] = useState([])
 const HandleGetAllData = async () =>{
-   const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/GetAllMarathon`)
-   console.log('the marathons Data are',data);
+   const {data} = await axios.get(`https://server-fawn-three.vercel.app/getAllMarathon`)
+//    console.log('the marathons Data are',data);
    setjob(data)
    
 }
-console.log('the alldata is',job);
+// console.log('the alldata is',job);
 
 
 
